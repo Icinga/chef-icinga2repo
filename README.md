@@ -3,6 +3,8 @@ icinga2repo Cookbook
 
 [![Cookbook](https://img.shields.io/github/tag/Icinga/chef-icinga2repo.svg)](https://github.com/Icinga/chef-icinga2repo) [![Build Status](https://travis-ci.org/Icinga/chef-icinga2repo.svg?branch=master)](https://travis-ci.org/Icinga/chef-icinga2repo)
 
+![Icinga Logo](https://www.icinga.com/wp-content/uploads/2014/06/icinga_logo.png)
+
 This is a [Chef] cookbook to manage [Icinga2] YUM/APT [Repository].
 
 

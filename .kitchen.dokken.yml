@@ -1,7 +1,7 @@
 ---
 driver:
   name: dokken
-  privileged: true
+  privileged: false
 
 transport:
   name: dokken
@@ -91,9 +91,6 @@ suites:
     run_list:
       - recipe[icinga2repo::default]
       - recipe[icinga2repo_test::default]
-    attributes:
-      elastic_beats_repo:
-        version: 1.3.1
 
   - name: chef13
     driver:
