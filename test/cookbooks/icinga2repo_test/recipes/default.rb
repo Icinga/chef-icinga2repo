@@ -5,4 +5,6 @@
 # Copyright:: 2017, The Authors, All Rights Reserved.
 #
 
-package 'icinga2'
+package 'icinga2' do
+  options '--no-install-recommends' if node['platform'] == 'debian'
+end
