@@ -1,5 +1,8 @@
 # frozen_string_literal: true
 
+# Whether to enable the snapshots repository or not
+default['icinga2repo']['enable_snapshots'] = false
+
 case node['platform_family']
 when 'fedora', 'rhel', 'amazon'
   yum_baseurl = value_for_platform(
@@ -10,21 +13,17 @@ when 'fedora', 'rhel', 'amazon'
 
   default['icinga2repo']['release']['yum']['description'] = 'icinga2-release'
   default['icinga2repo']['release']['yum']['gpgcheck'] = true
-  default['icinga2repo']['release']['yum']['enabled'] = true
   default['icinga2repo']['release']['yum']['gpgkey'] = 'http://packages.icinga.com/icinga.key'
   default['icinga2repo']['release']['yum']['baseurl'] = "#{yum_baseurl}/release/"
   default['icinga2repo']['release']['yum']['mirrorlist'] = nil
   default['icinga2repo']['release']['yum']['metadata_expire'] = '10h'
-  default['icinga2repo']['release']['yum']['action'] = :create
 
   default['icinga2repo']['snapshot']['yum']['description'] = 'icinga2-snapshot'
   default['icinga2repo']['snapshot']['yum']['gpgcheck'] = true
-  default['icinga2repo']['snapshot']['yum']['enabled'] = false
   default['icinga2repo']['snapshot']['yum']['gpgkey'] = 'http://packages.icinga.com/icinga.key'
   default['icinga2repo']['snapshot']['yum']['baseurl'] = "#{yum_baseurl}/snapshot/"
   default['icinga2repo']['snapshot']['yum']['mirrorlist'] = nil
   default['icinga2repo']['snapshot']['yum']['metadata_expire'] = '10h'
-  default['icinga2repo']['snapshot']['yum']['action'] = :create
 
 when 'raspbian', 'debian'
   apt_baseurl = value_for_platform(
@@ -38,7 +37,6 @@ when 'raspbian', 'debian'
   default['icinga2repo']['release']['apt']['components'] = %w[main]
   default['icinga2repo']['release']['apt']['deb_src'] = false
   default['icinga2repo']['release']['apt']['uri'] = apt_baseurl
-  default['icinga2repo']['release']['apt']['action'] = :add
   default['icinga2repo']['release']['apt']['distribution'] = 'icinga-' + node['lsb']['codename'].to_s
 
   default['icinga2repo']['snapshot']['apt']['repo'] = 'icinga2-snapshot'
@@ -47,7 +45,6 @@ when 'raspbian', 'debian'
   default['icinga2repo']['snapshot']['apt']['components'] = %w[main]
   default['icinga2repo']['snapshot']['apt']['deb_src'] = false
   default['icinga2repo']['snapshot']['apt']['uri'] = "#{apt_baseurl}-snapshots"
-  default['icinga2repo']['snapshot']['apt']['action'] = :remove
   default['icinga2repo']['snapshot']['apt']['distribution'] = 'icinga-' + node['lsb']['codename'].to_s + '-snapshots'
 else
   default['icinga2repo']['release']['apt'] = {}
