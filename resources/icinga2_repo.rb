@@ -13,6 +13,8 @@ action :add do
   case node['platform_family']
 
   when 'rhel', 'fedora', 'amazon'
+    include_recipe 'yum-epel'
+
     yum_repository 'icinga2-release' do
       description node['icinga2repo']['release']['yum']['description']
       baseurl node['icinga2repo']['release']['yum']['baseurl']
