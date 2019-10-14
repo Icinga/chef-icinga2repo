@@ -66,13 +66,3 @@ end
 describe package('icinga2-bin') do
   it { should be_installed }
 end
-
-if %w[redhat fedora amazon].include?(os[:family])
-  describe package('icinga2-libs') do
-    it { should be_installed }
-  end
-else
-  describe package('libicinga2') do
-    it { should be_installed }
-  end
-end

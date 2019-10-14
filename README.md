@@ -52,14 +52,32 @@ https://github.com/Icinga/icinga2repo
 - yum
 
 
+## Resources
+
+### icinga2_repo
+
+This resource configures the icinga2 release and snapshot repositories
+
+#### Actions
+
+- `add` - (default) Adds the repository
+- `remove` - Removes the repository
+
+#### Properties
+
+Name               | Type       | Description           | Default | Required?
+------------------ | ---------- | --------------------- | ------- | ---------
+`enable_snapshots` | Boolean    | Enable snapshots repo | false   | no
+
+
 ## Recipes
-
-- `icinga2repo::apt` - configure icinga2 apt repository
-
-- `icinga2repo::yum` - configure icinga2 yum repository
 
 - `icinga2repo::default` - configure platform specific icinga2 repository
 
+
+## General Attributes
+
+* `default['icinga2repo']['enable_snapshots']` (default: `false`): Whether to enable the snapshots repository
 
 ## YUM Repository Attributes
 
@@ -77,8 +95,6 @@ https://github.com/Icinga/icinga2repo
 
 * `default['icinga2repo']['release']['yum']['metadata_expire']` (default: `3h`): yum repository attribute
 
-* `default['icinga2repo']['release']['yum']['action']` (default: `:create`): yum repository attribute
-
 * `default['icinga2repo']['snapshot']['yum']['description']` (default: `icinga2-release`): yum repository attribute
 
 * `default['icinga2repo']['snapshot']['yum']['gpgcheck']` (default: `true`): yum repository attribute
@@ -92,8 +108,6 @@ https://github.com/Icinga/icinga2repo
 * `default['icinga2repo']['snapshot']['yum']['mirrorlist']` (default: `nil`): yum repository attribute
 
 * `default['icinga2repo']['snapshot']['yum']['metadata_expire']` (default: `3h`): yum repository attribute
-
-* `default['icinga2repo']['snapshot']['yum']['action']` (default: `:create`): yum repository attribute
 
 
 ## APT Repository Attributes
@@ -110,8 +124,6 @@ https://github.com/Icinga/icinga2repo
 
 * `default['icinga2repo']['release']['apt']['distribution']` (default: `calculated`): apt repository attribute
 
-* `default['icinga2repo']['release']['apt']['action']` (default: `:add`): apt repository attribute
-
 * `default['icinga2repo']['snapshot']['apt']['description']` (default: `icinga2-release`): apt repository attribute
 
 * `default['icinga2repo']['snapshot']['apt']['components']` (default: `['main']`): apt repository attribute
@@ -123,8 +135,6 @@ https://github.com/Icinga/icinga2repo
 * `default['icinga2repo']['snapshot']['apt']['keyserver']` (default: `keyserver.ubuntu.com`): apt repository attribute
 
 * `default['icinga2repo']['snapshot']['apt']['distribution']` (default: `calculated`): apt repository attribute
-
-* `default['icinga2repo']['snapshot']['apt']['action']` (default: `:add`): apt repository attribute
 
 
 ## Contributing

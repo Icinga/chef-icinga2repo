@@ -6,11 +6,6 @@
 # Copyright:: 2017, The Authors, All Rights Reserved.
 #
 
-case node['platform_family']
-when 'raspbian', 'debian'
-  include_recipe 'icinga2repo::apt'
-when 'fedora', 'rhel', 'amazon'
-  include_recipe 'icinga2repo::yum'
-else
-  raise "platform_family #{node['platform_family']} not supported"
+icinga2_repo 'icinga2' do
+  enable_snapshots node['icinga2repo']['enable_snapshots']
 end
