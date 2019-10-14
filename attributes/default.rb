@@ -13,6 +13,7 @@ when 'fedora', 'rhel', 'amazon'
 
   default['icinga2repo']['release']['yum']['description'] = 'icinga2-release'
   default['icinga2repo']['release']['yum']['gpgcheck'] = true
+  default['icinga2repo']['release']['yum']['enabled'] = true
   default['icinga2repo']['release']['yum']['gpgkey'] = 'http://packages.icinga.com/icinga.key'
   default['icinga2repo']['release']['yum']['baseurl'] = "#{yum_baseurl}/release/"
   default['icinga2repo']['release']['yum']['mirrorlist'] = nil
@@ -20,6 +21,7 @@ when 'fedora', 'rhel', 'amazon'
 
   default['icinga2repo']['snapshot']['yum']['description'] = 'icinga2-snapshot'
   default['icinga2repo']['snapshot']['yum']['gpgcheck'] = true
+  default['icinga2repo']['snapshot']['yum']['enabled'] = false
   default['icinga2repo']['snapshot']['yum']['gpgkey'] = 'http://packages.icinga.com/icinga.key'
   default['icinga2repo']['snapshot']['yum']['baseurl'] = "#{yum_baseurl}/snapshot/"
   default['icinga2repo']['snapshot']['yum']['mirrorlist'] = nil

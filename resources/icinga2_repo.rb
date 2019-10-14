@@ -20,6 +20,7 @@ action :add do
       gpgcheck node['icinga2repo']['release']['yum']['gpgcheck']
       gpgkey node['icinga2repo']['release']['yum']['gpgkey']
       metadata_expire node['icinga2repo']['release']['yum']['metadata_expire']
+      enabled node['icinga2repo']['release']['yum']['enabled']
       action :create
     end
 
@@ -30,8 +31,8 @@ action :add do
       gpgcheck node['icinga2repo']['snapshot']['yum']['gpgcheck']
       gpgkey node['icinga2repo']['snapshot']['yum']['gpgkey']
       metadata_expire node['icinga2repo']['snapshot']['yum']['metadata_expire']
+      enabled new_resource.enable_snapshots
       action :create
-      only_if { new_resource.enable_snapshots }
     end
 
   when 'debian'

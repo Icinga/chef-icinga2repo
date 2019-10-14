@@ -85,6 +85,8 @@ Name               | Type       | Description           | Default | Required?
 
 * `default['icinga2repo']['release']['yum']['gpgcheck']` (default: `true`): yum repository attribute
 
+* `default['icinga2repo']['release']['yum']['enabled']` (default: `true`): yum repository attribute
+
 * `default['icinga2repo']['release']['yum']['baseurl']` (default: `calculated`): yum repository attribute
 
 * `default['icinga2repo']['release']['yum']['gpgkey']` (default: `http://packages.icinga.com/icinga.key`): yum repository attribute
@@ -96,6 +98,8 @@ Name               | Type       | Description           | Default | Required?
 * `default['icinga2repo']['snapshot']['yum']['description']` (default: `icinga2-release`): yum repository attribute
 
 * `default['icinga2repo']['snapshot']['yum']['gpgcheck']` (default: `true`): yum repository attribute
+
+* `default['icinga2repo']['snapshot']['yum']['enabled']` (default: `true`): yum repository attribute
 
 * `default['icinga2repo']['snapshot']['yum']['baseurl']` (default: `calculated`): yum repository attribute
 
