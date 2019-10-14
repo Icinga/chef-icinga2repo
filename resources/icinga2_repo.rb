@@ -57,6 +57,16 @@ action :add do
       only_if { new_resource.enable_snapshots }
     end
 
+    if node['platform'] == 'debian' && node['platform_version'].to_i >= 9
+      # The debian-backports repository is required starting from Icinga2 v2.11
+      apt_repository "#{node['lsb']['codename']}-backports" do
+        uri 'https://deb.debian.org/debian'
+        distribution "#{node['lsb']['codename']}-backports"
+        components ['main']
+        action :add
+      end
+    end
+
   else
     raise "The platform_family '#{node['platform_family']}' is not supported by the icinga2_repo resource."
   end
